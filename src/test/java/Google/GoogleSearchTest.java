@@ -27,6 +27,7 @@ public class GoogleSearchTest {
         assertResultsSize(10);
         assertNthResult(0, "Selenium - Web Browser Automation");
         followNthLink(0);
+        $(".homepage").shouldBe(visible);
         assertOpenedURL("http://www.seleniumhq.org/");
 
     }
@@ -55,7 +56,6 @@ public class GoogleSearchTest {
     }
 
     private void assertOpenedURL(String expectedURL) {
-        $(".homepage").shouldBe(visible);
         assertEquals(expectedURL, url());
     }
 }
