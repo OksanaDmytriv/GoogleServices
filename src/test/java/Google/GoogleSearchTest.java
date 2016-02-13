@@ -1,5 +1,6 @@
 package Google;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.Test;
@@ -9,8 +10,14 @@ import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
+import static org.junit.Assert.assertEquals;
 
 public class GoogleSearchTest {
+
+    static {
+        Configuration.timeout = 15000;
+    }
+
     @Test
     public void testSearchText() {
 
@@ -20,6 +27,7 @@ public class GoogleSearchTest {
         assertNthResult(0, "Selenium - Web Browser Automation");
         followNthLink(0);
         assertOpenedURL("http://www.seleniumhq.org/");
+
     }
 
     SelenideElement searchField = $(By.name("q"));
@@ -46,6 +54,6 @@ public class GoogleSearchTest {
     }
 
     private void assertOpenedURL(String expectedURL) {
-        url().equals(expectedURL);
+        assertEquals(expectedURL, url());
     }
 }
