@@ -3,18 +3,12 @@ package GoogleSearch.SeleniumTest.BaseTest;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static GoogleSearch.SeleniumTest.WithoutBaseTest.Helpers.sizeOf;
 import static org.openqa.selenium.support.ui.ExpectedConditions.textToBePresentInElementLocated;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleContains;
 
 public class GoogleSearchTest extends BaseTest {
-
-    static WebDriver driver;
-    static ExamplePage page;
-    static WebDriverWait wait;
 
     @Test
     public void testSearchText() {
