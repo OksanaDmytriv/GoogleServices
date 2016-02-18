@@ -1,4 +1,4 @@
-package GoogleSearch.SeleniumTest;
+package GoogleSearch.SeleniumTest.BaseTest;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +15,7 @@ public class Helpers {
                 listSize = results.size();
                 return listSize == expectedSize;
             }
+
             public String toString() {
                 return String.format("\nsize of list: %s\n to be: %s\n while actual size is: %s\n", results, expectedSize, listSize);
 

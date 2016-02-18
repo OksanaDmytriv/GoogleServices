@@ -1,4 +1,4 @@
-package GoogleSearch.SeleniumTest;
+package GoogleSearch.SeleniumTest.BaseTest;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

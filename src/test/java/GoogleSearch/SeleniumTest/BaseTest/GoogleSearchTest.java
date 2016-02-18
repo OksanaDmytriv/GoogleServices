@@ -1,34 +1,20 @@
-package GoogleSearch.SeleniumTest;
+package GoogleSearch.SeleniumTest.BaseTest;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static GoogleSearch.SeleniumTest.Helpers.sizeOf;
+import static GoogleSearch.SeleniumTest.WithoutBaseTest.Helpers.sizeOf;
 import static org.openqa.selenium.support.ui.ExpectedConditions.textToBePresentInElementLocated;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleContains;
 
-public class GoogleSearchTest{
+public class GoogleSearchTest extends BaseTest {
 
     static WebDriver driver;
     static ExamplePage page;
-    WebDriverWait wait = new WebDriverWait(driver, 6);
-
-    @BeforeClass
-    public static void setUp() {
-        driver = new FirefoxDriver();
-        page = new ExamplePage(driver);
-    }
-
-    @AfterClass
-    public static void teardown() {
-        driver.quit();
-    }
+    static WebDriverWait wait;
 
     @Test
     public void testSearchText() {
