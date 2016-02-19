@@ -15,7 +15,6 @@ public class CustomConditions {
 
             public Boolean apply(WebDriver webDriver) {
                 results = webDriver.findElements(elementsLocator);
-                //results = webDriver.findElements(By.cssSelector(".srg>.g"));
                 listSize = results.size();
                 return listSize == expectedSize;
             }
