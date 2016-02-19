@@ -1,5 +1,6 @@
 package GoogleSearch.SeleniumTest.WithoutPages;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -24,10 +25,10 @@ public class GoogleSearchTest {
         driver = new FirefoxDriver();
     }
 
-    //@AfterClass
-    //public static void teardown() {
-      //  driver.quit();
-    //}
+    @AfterClass
+    public static void teardown() {
+        driver.quit();
+    }
 
     @Test
     public void testSearchText() {
@@ -35,15 +36,15 @@ public class GoogleSearchTest {
         openGoogle();
         searchText("Selenium automates browsers");
         assertResultsSize(10);
-        driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
         assertFirstResult(0, "Selenium - Web Browser Automation");
         clickOnNthLink(0);
-       assertOpenedURL("Selenium - Web Browser Automation");
+        assertOpenedURL("Selenium - Web Browser Automation");
     }
 
-    //public static List<WebElement> results(){
-    List<WebElement> results = driver.findElements(By.cssSelector(".srg>.g"));
-    //return results;}
+    public static List<WebElement> results() {
+        List<WebElement> results = driver.findElements(By.cssSelector(".srg>.g"));
+        return results;
+    }
 
     private void openGoogle() {
         driver.get("http://google.com/ncr");
@@ -58,17 +59,17 @@ public class GoogleSearchTest {
     }
 
     private void assertFirstResult(int index, String expectedText) {
-        assertTrue(results.get(index).getText().contains(expectedText));
-        //wait.until(textToBePresentInElementLocated(By.cssSelector(results + ":nth-child(1)"), expectedText));
+        driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+        assertTrue(results().get(index).getText().contains(expectedText));
     }
 
     private void clickOnNthLink(int resultLink) {
-        results.get(resultLink).findElement(By.cssSelector(".r>a")).sendKeys(Keys.ENTER);
+        results().get(resultLink).findElement(By.cssSelector(".r>a")).sendKeys(Keys.ENTER);
     }
 
     private void assertOpenedURL(String expectedTitle) {
+        driver.findElement(By.cssSelector(".homepage")).isDisplayed();
         assertEquals(driver.getTitle(), expectedTitle);
-        //wait.until(titleContains(expectedTitle));
     }
 }
 
