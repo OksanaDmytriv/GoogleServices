@@ -1,4 +1,4 @@
-package GoogleSearch;
+package GoogleSearch.final1302;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
